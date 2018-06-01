@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="description" content="Dropcast is a responsive HTML/CSS/Javascript template for podcasts">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>BlogSpot</title>
+      <link rel="stylesheet" href="/assets/css/dropcast.css">
+      <link rel="author" href="Amie Chen for Codrops">
+
+      <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Rufina:400,700|Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+
+      <!-- <link rel="stylesheet" href="/assets/bootstrap/bootstrap.min.css">
+      <script src="/assets/bootstrap/jQuery.js"></script>
+      <script src="/assets/bootstrap/popper.js"></script>
+      <script src="/assets/bootstrap/bootstrap.min.js"></script> -->
+
+      <link rel="stylesheet" href="/assets/xyz/style3.css">
+      <link rel="stylesheet" href="/assets/button/css/style.css">
+
+    </head>
+    <body>
+      <div class="container green borderXwidth">
+        <a href="/home">Recent</a>
+        <a href="/business">Business/Economy</a>
+        <a href="/entertainment">Entertainment</a>
+        <a href="/health">Health</a>
+        <a href="/political">Political</a>
+        <a href="/sports">Sports</a>
+        <a href="/technology">Technology/Science</a>
+        <a href="/logout" style="color:black;">Logout</a>
+      </div>
+      <div id="site__bg"></div>
+      <div class="main">
+        <nav>
+          <div class="logo nav__logo">
+            <a href="/index"><img src="/assets/images/logo.svg" alt="logo"/></a>
+          </div>
+          <ul class="nav__list">
+            <li class="nav__item"><a href="/myblogs">Episodes</a></li>
+          </ul>
+          <ul class="nav__social">
+            <li><a href="#" class="nav_social__item"><i class="fab fa-google-play"></i></a></li>
+            <li><a href="#" class="nav_social__item"><i class="fab fa-itunes-note"></i></a></li>
+            <li><a href="#" class="nav_social__item"><i class="fas fa-rss-square"></i></a></li>
+          </ul>
+        </nav>
+
+        <section class="site">
+
+          <h1 class="site__title site__title--separator">Blog Spot</h1>
+          <p class="site__description" style="color:#fe8900; font-size:28px;"><%=username%></p>
+          <p><b style="font-size:20px;">Add your Article Here!!!</b></p>
+
+         <form method="post" action='/home'>
+          	<textarea name='article' placeholder="Write your Blog!"></textarea>
+          <!-- <input type="submit" name="submit" style="position: right; float: right; top margin:20px; width: 100px; height:50px; background-color:green; left padding: 100px;">
+    <!--     <div class="wrap">
+            <a class="button rollover">
+              <span class="roll-text">Submit</span>
+              <button class="roll-text" type="submit" formaction="/home">Post</button>
+
+            </a>
+          </div> -->
+
+          <div>
+              <button class="btn btn-primary button " >Submit</button>
+          </div>
+        </form>
+        <!--   <div class="FAKE-WRAPPER">
+
+            <div class="chat-form">
+                <div class="parsing-mask" style="display: none;"><i class="fa fa-spinner fa-spin"></i></div>
+
+              <div class="input-cont">
+              <div class="place-holder hidden">Send a Message</div>
+
+              <textarea class="form-control expandable" type="text" id="myIn" placeholder="Share something..." rows="2"></textarea>
+               <i class="zang-icon icon-attach"></i>
+               <i class="zang-icon icon-submit"></i>
+
+              </div>
+            </div>
+
+          </div>-->
+
+        </section>
+
+        <section class="episodes">
+          <% allblogs.forEach(function(blog, index){%>
+          <article class="episode">
+            <h2 class="episode__number"><%=(index+1)%></h2>
+            <div class="episode__media">
+              <a href=<%="/detail/"+blog._id%> class="episode__image"></a>
+            </div>
+            <div class="episode__detail">
+              <a href=<%="/detail/"+blog._id%> class="episode__title"><h4><%=blog.username%></h4></a>
+              <p class="episode__description"><%=blog.article.substring(0, 70)%>...<strong>Read more</strong></p>
+            </div>
+          </article>
+          <%})%>
+
+        </section>
+      </div>
+
+      <script src="/assets/js/dropcast.js"></script>
+      <script src="/assets/xyz/effects.js"></script>
+    </body>
+</html>
